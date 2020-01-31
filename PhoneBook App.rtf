@@ -1,0 +1,471 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-BoldItalic;\f2\fnil\fcharset0 Menlo-Italic;
+\f3\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww20980\viewh14120\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 package phoneBook;\
+\
+import java.util.Scanner;\
+\
+public class Application \{\
+\
+	public static void main(String[] args) \{\
+\
+		Scanner input = new Scanner(System.
+\f1\i\b in
+\f0\i0\b0 );\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("****************************** Welcome!********************");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("              Please Select From The Following Options:               ");\
+\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("**********************************************************************");\
+\
+		Person[] contacts = new Person[0];\
+		Person temp = new Person();\
+		int choice;\
+		int \ul searchChoice\ulnone ;\
+		boolean running = true;\
+		String searchName;\
+		Person \ul tempPerson\ulnone  = null;\
+		\
+		\
+		do \{\
+\
+			choice = 
+\f2\i mainMenu
+\f0\i0 (input);\
+\
+			switch (choice) \{\
+			case 0:\
+				running = false;\
+\
+				break;\
+\
+			case 1://ADD A Person\
+				temp = 
+\f2\i getInfo
+\f0\i0 (input);\
+				contacts = 
+\f2\i addContactsToArray
+\f0\i0 (contacts, temp);\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println(contacts[0].getFirstName());\
+				break;\
+		\
+				\
+				\
+			case 2://remove\
+				\
+				\
+\
+				break;\
+				\
+			case 3: //search\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter Phone Number");\
+				searchName = input.nextLine();\
+				
+\f2\i findPersonByPhoneNum
+\f0\i0 (contacts, searchName);\
+				break;\
+				\
+			case 4://update\
+				\
+				\
+				break;\
+			case 5:// display all\
+				
+\f2\i displayResults
+\f0\i0 (contacts);\
+				\
+				break;\
+				\
+			default:\
+				\
+			\}\
+		\} while (running);\
+	\}\
+	public static Person[]findPersonByState(Person[]contacts,String findByState)\
+	\{\
+		Person[]tempArray = new Person[0];\
+		Person tempPerson;\
+		for(int i =0;i <contacts.length;i++) \
+		\{\
+			tempPerson = contacts[i];\
+			if(tempPerson.getAddress().getstate().equals(findByState))\
+			\{\
+				tempArray = Person.
+\f2\i addPerson
+\f0\i0 (tempArray,tempPerson);\
+			\}\
+ 		\}return tempArray;\
+	\}\
+	\
+	\
+	public static Person[]findPersonByCity(Person[]contacts,String findByCity)\
+	\{\
+		Person[]tempArray = new Person[0];\
+		Person tempPerson;\
+		for(int i =0;i <contacts.length;i++) \
+		\{\
+			tempPerson = contacts[i];\
+			if(tempPerson.getAddress().getcity().equals(findByCity))\
+			\{\
+				tempArray = Person.
+\f2\i addPerson
+\f0\i0 (tempArray,tempPerson);\
+			\}\
+		\}return tempArray;\
+	\}\
+	\
+	\
+\
+	public static Person[]findPersonByPhoneNum(Person[]contacts,String findByBothNames)\
+	\{\
+		Person[]tempArray = new Person[0];\
+		Person tempPerson;\
+		for(int i =0;i <contacts.length;i++) \
+		\{\
+			tempPerson = contacts[i];\
+			if(tempPerson.getTelephone().equals(findByBothNames))\
+			\{\
+				tempArray = Person.
+\f2\i addPerson
+\f0\i0 (tempArray,tempPerson);\
+			\}\
+		\}return tempArray;\
+	\}\
+	\
+	\
+	\
+	\
+	\
+	public static Person[]findPersonByFullName(Person[]contacts,String findByBothNames)\
+	\{\
+		Person[]tempArray = new Person[0];\
+		Person tempPerson;\
+		for(int i =0;i <contacts.length;i++) \
+		\{\
+			tempPerson = contacts[i];\
+			if(tempPerson.getFullName().equals(findByBothNames))\
+			\{\
+				tempArray = Person.
+\f2\i addPerson
+\f0\i0 (tempArray,tempPerson);\
+			\}\
+		\}return tempArray;\
+	\}\
+		\
+	\
+	\
+	\
+	\
+	public static Person[]findPersonByLastName(Person[]contacts,String findName)\
+	\{\
+		Person[]tempArray = new Person[0];\
+		Person tempPerson;\
+		for(int i =0;i <contacts.length;i++)\
+		\{\
+			tempPerson = contacts[i];\
+			if(tempPerson.getLastName().equals(findName));\
+			\{\
+				tempArray = Person.
+\f2\i addPerson
+\f0\i0 (tempArray,tempPerson);\
+			\}\
+			\
+		\}\
+		return tempArray;\
+	\}\
+			\
+		\
+\
+	public static Person[]findPersonByFirstName(Person[]contacts,String toSearch)\
+	\{\
+		Person[]tempArray = new Person[0];\
+		Person tempPerson;\
+		for(int i =0;i <contacts.length;i++) \
+		\{\
+			tempPerson = contacts[i];\
+			if(tempPerson.getLastName().equals(toSearch)) \{\
+				tempArray = Person.
+\f2\i addPerson
+\f0\i0 (tempArray,contacts[i]);\
+			\}\
+			\
+		\}\
+		return tempArray;		\
+	\}\
+	\
+	public static Person getInfo(Scanner input) \{\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter User Information");\
+		input.next();\
+		String info = input.nextLine();\
+		String[] infoarray;\
+		infoarray = info.split(",");\
+		String fullname, addressName, city, state, zip, telephone;\
+		fullname = infoarray[0];\
+		addressName = infoarray[1];\
+		city = infoarray[2];\
+		state = infoarray[3];\
+		zip = infoarray[4];\
+		telephone = infoarray[5];\
+\
+		Address address = new Address(addressName, city, state, zip);\
+		Person tempPerson = new Person(fullname, telephone, address);\
+		return tempPerson;\
+\
+	\}\
+\
+	private static Person[] addContactsToArray(Person[] contacts, Person temp) \{\
+		Person[] tempArray = new Person[contacts.length + 1];\
+		for (int i = 0; i < contacts.length; i++) \{\
+			tempArray[i] = contacts[i];\
+		\}\
+		tempArray[contacts.length] = temp;\
+		return tempArray;\
+	\}\
+	\
+	\
+	private static Person[] \ul deleteRecord(String telephoneDelete, Person[] contacts)\ulnone  \{\
+	\
+\
+	Person[] tempArray = new Person[0];	\
+	for (int i = 0; i < contacts.length; i++)\
+	\{\
+	Person temp = contacts[i];\
+\
+	if (!temp.getTelephone().equals(telephoneDelete))\
+	\{\
+\
+		\
+\
+	\}\
+\
+	\}\
+	return tempArray;\
+	\}\
+\
+	private static int mainMenu(Scanner input) \{\
+		// 
+\f3\b TODO
+\f0\b0  Auto-generated method stub\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println(\
+				"----------------------------------------------------------------------------------------------------------");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 0 to Exit Application.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 1 to add an entry:");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 2 to remove an entry:");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 3 to Search entry:");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 4 to update a phonenumber:");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 5 to display all entries:");\
+		int result = input.nextInt();\
+		return result;\
+	\}\
+\
+	public static void dispMenu() \{\
+\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println(\
+				"----------------------------------------------------------------------------------------------------------");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 0 to Exit Application.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 1 to Search by first name.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 2 to Search by last name.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 3 to Search by fullname.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 4 to Search by telephone number.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 5 to Search by city or state.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 6 to Update a record for a given telephone number. ");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter 7 to Show all records in asc order.");\
+		System.
+\f1\i\b out
+\f0\i0\b0 .println("------------------------------------------------------------- ");\
+\
+	\}\
+\
+\
+\
+	public static void searchForPerson( int input,Person [] contacts) \{ \
+		 Person contact = new Person();\
+		 int \ul userInput\ulnone ;\
+		 Person[] \ul searchResult\ulnone = new Person[0];\
+		 String \ul toSearch\ulnone ;\
+		  \
+		 \
+		 
+\f2\i dispMenu
+\f0\i0 ();\
+		 \
+		 System.
+\f1\i\b out
+\f0\i0\b0 .println("What Do You wanna search by?"\
+		 		+ "1. First Name"\
+		 		+ "2. Last Name"\
+		 		+ "3. Full Name");\
+		 \
+		 Scanner \ul dave\ulnone  = new Scanner(System.
+\f1\i\b in
+\f0\i0\b0 );\
+		 \
+			int choice = dave.nextInt();\
+			\
+\
+			switch (choice) \{\
+\
+			case 1:\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter First Name");\
+				Scanner s = new Scanner(System.
+\f1\i\b in
+\f0\i0\b0 );\
+				String name = s.next();\
+				\
+				for(int i = 0;i <contacts.length;\ul i++\ulnone ) \{\
+					contact = contacts[i];\
+					if(contact.getFirstName()==name);\
+					\
+					\{\
+						System.
+\f1\i\b out
+\f0\i0\b0 .println(name.toString());\}\
+					\
+						break;\}\
+				\
+			case 2:\
+				\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter Last Name");\
+				Scanner a = new Scanner(System.
+\f1\i\b in
+\f0\i0\b0 );\
+				String nameLast = a.next();\
+				for(int i = 0;i < contacts.length;i++) \
+					contact = contacts[i];\
+					if(contact.getLastName()==nameLast);\
+					\
+					\{\
+						System.
+\f1\i\b out
+\f0\i0\b0 .println(nameLast .toString());\}\
+					\
+					break;\
+					\
+					\
+			\
+			case 3: \
+				\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter Telephone: ");\
+				Scanner b = new Scanner(System.
+\f1\i\b in
+\f0\i0\b0 );\
+				String phoneNum = b.next();\
+				for (int i = 0; i < contacts.length; i++)\
+					contact = contacts[i];\
+					if(contact.getTelephone()==phoneNum);\
+				\{\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println(phoneNum.toString());\
+				\
+				\}\
+				\
+				break;\
+			\
+			case 4:\
+				\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("city:");\
+				Scanner c = new Scanner(System.
+\f1\i\b in
+\f0\i0\b0 );\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("Enter Last Name");\
+				String nameCity = c.next();\
+				for(int i = 0;i < contacts.length;i++) \
+					contact = contacts[i];\
+					if(contact.getAddress().getcity()==nameCity);\
+					\
+					\{\
+						System.
+\f1\i\b out
+\f0\i0\b0 .println(nameCity .toString());\}\
+					\
+					break;\
+								\
+		 \
+			\}\
+		\}\
+	private static void displayResults(Person[] persons) \{\
+			if(persons.length ==0)\{\
+				System.
+\f1\i\b out
+\f0\i0\b0 .println("No one found.");\
+			\}else\{\
+				for(int i=0; i<persons.length; i++)\{\
+					System.
+\f1\i\b out
+\f0\i0\b0 .println("("+(i+1)+")");\
+					System.
+\f1\i\b out
+\f0\i0\b0 .println(persons[i].toString());\
+			\
+			\}\
+				\
+			\
+\
+			\}\
+			\
+			\
+			\
+		\}\
+	\}\
+\
+}
